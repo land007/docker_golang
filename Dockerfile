@@ -8,9 +8,7 @@ ENV GOROOT=/usr/local/go
 RUN mkdir /usr/local/go/path
 ENV GOPATH=/usr/local/go/path
 ENV PATH=$PATH:$GOPATH/bin:$GOROOT/bin
-RUN echo 'export GOROOT=/usr/local/go' >> /etc/profile
-RUN echo 'export GOPATH=/usr/local/go/path' >> /etc/profile
-RUN echo 'export PATH=$PATH:$GOPATH/bin:$GOROOT/bin' >> /etc/profile
+RUN echo 'export GOROOT=/usr/local/go' >> /etc/profile && echo 'export GOPATH=/usr/local/go/path' >> /etc/profile && echo 'export PATH=$PATH:$GOPATH/bin:$GOROOT/bin' >> /etc/profile
 
 
 #docker stop golang ; docker rm golang ; docker run -it --privileged --name golang land007/golang:latest
