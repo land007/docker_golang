@@ -1,4 +1,4 @@
-FROM land007/centos:7.5.1804
+FROM land007/centos-build:7.5.1804
 
 MAINTAINER Yiqiu Jia <yiqiujia@hotmail.com>
 
@@ -10,6 +10,7 @@ RUN mkdir /usr/local/go/path
 ENV GOPATH=/usr/local/go/path
 ENV PATH=$PATH:$GOPATH/bin:$GOROOT/bin
 RUN echo 'export GOROOT=/usr/local/go' >> /etc/profile && echo 'export GOPATH=/usr/local/go/path' >> /etc/profile && echo 'export PATH=$PATH:$GOPATH/bin:$GOROOT/bin' >> /etc/profile
+
 
 #ubuntu
 #docker stop golang ; docker rm golang ; docker run -it --privileged --name golang land007/golang:latest
