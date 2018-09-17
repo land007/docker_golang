@@ -1,4 +1,4 @@
-FROM land007/centos-build:latest
+FROM land007/centos:7.5.1804
 
 MAINTAINER Yiqiu Jia <yiqiujia@hotmail.com>
 
