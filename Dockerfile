@@ -11,5 +11,7 @@ ENV GOPATH=/usr/local/go/path
 ENV PATH=$PATH:$GOPATH/bin:$GOROOT/bin
 RUN echo 'export GOROOT=/usr/local/go' >> /etc/profile && echo 'export GOPATH=/usr/local/go/path' >> /etc/profile && echo 'export PATH=$PATH:$GOPATH/bin:$GOROOT/bin' >> /etc/profile
 
+RUN echo $(date "+%Y-%m-%d_%H:%M:%S") > /.image_time
+RUN echo "land007/golang" > /.image_name
 
 #docker stop golang ; docker rm golang ; docker run -it --privileged --name golang land007/golang:latest
