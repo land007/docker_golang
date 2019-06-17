@@ -9,7 +9,7 @@ RUN cd /tmp && wget https://dl.google.com/go/go1.10.3.linux-amd64.tar.gz && tar 
 RUN mkdir /usr/local/go/path
 ENV GOROOT=/usr/local/go \
 	GOPATH=/usr/local/go/path \
-	PATH=$PATH:$GOPATH/bin:$GOROOT/bin
+	PATH=$PATH:/usr/local/go/bin:/usr/local/go/path/bin
 RUN echo 'export GOROOT=/usr/local/go' >> /etc/profile && \
 	echo 'export GOPATH=/usr/local/go/path' >> /etc/profile && \
 	echo 'export PATH=$PATH:$GOPATH/bin:$GOROOT/bin' >> /etc/profile && \
