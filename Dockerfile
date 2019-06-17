@@ -6,11 +6,13 @@ RUN cd /tmp && wget https://dl.google.com/go/go1.10.3.linux-amd64.tar.gz && tar 
 #ARM https://dl.google.com/go/go1.11.linux-arm64.tar.gz
 	apt-get install -y graphviz
 
-ENV GOROOT=/usr/local/go
 RUN mkdir /usr/local/go/path
-ENV GOPATH=/usr/local/go/path \
+ENV GOROOT=/usr/local/go \
+	GOPATH=/usr/local/go/path \
 	PATH=$PATH:$GOPATH/bin:$GOROOT/bin
-RUN echo 'export GOROOT=/usr/local/go' >> /etc/profile && echo 'export GOPATH=/usr/local/go/path' >> /etc/profile && echo 'export PATH=$PATH:$GOPATH/bin:$GOROOT/bin' >> /etc/profile && \
+RUN echo 'export GOROOT=/usr/local/go' >> /etc/profile && \
+	echo 'export GOPATH=/usr/local/go/path' >> /etc/profile && \
+	echo 'export PATH=$PATH:$GOPATH/bin:$GOROOT/bin' >> /etc/profile && \
 	echo $(date "+%Y-%m-%d_%H:%M:%S") >> /.image_times && \
 	echo $(date "+%Y-%m-%d_%H:%M:%S") > /.image_time && \
 	echo "land007/golang" >> /.image_names && \
