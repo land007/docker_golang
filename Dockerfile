@@ -4,7 +4,7 @@ MAINTAINER Yiqiu Jia <yiqiujia@hotmail.com>
 
 RUN cd /tmp && wget https://dl.google.com/go/go1.13.5.linux-amd64.tar.gz && tar -C /usr/local -xzf go1.13.5.linux-amd64.tar.gz && rm -f go1.13.5.linux-amd64.tar.gz && \
 #ARM https://dl.google.com/go/go1.11.linux-arm64.tar.gz
-	apt-get install -y graphviz
+	apt-get update && apt-get install -y graphviz
 
 RUN mkdir /usr/local/go/path
 ENV GOROOT=/usr/local/go \
