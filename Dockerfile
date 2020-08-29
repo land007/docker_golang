@@ -2,9 +2,13 @@ FROM land007/ubuntu-build:latest
 
 MAINTAINER Yiqiu Jia <yiqiujia@hotmail.com>
 
-RUN cd /tmp && wget https://dl.google.com/go/go1.13.5.linux-amd64.tar.gz && tar -C /usr/local -xzf go1.13.5.linux-amd64.tar.gz && rm -f go1.13.5.linux-amd64.tar.gz && \
-#ARM https://dl.google.com/go/go1.11.linux-arm64.tar.gz
-	apt-get update && apt-get install -y graphviz && apt-get clean
+RUN cd /tmp && unameOut="$(uname -m)" && \
+	 if [ "$unameOut" = "aarch64" ] ; then \
+	 wget https://dl.google.com/go/go1.13.5.linux-arm64.tar.gz && tar -C /usr/local -xzf go1.13.5.linux-arm64.tar.gz && rm -f go1.13.5.linux-arm64.tar.gz ; \
+	 else \
+	 wget https://dl.google.com/go/go1.13.5.linux-amd64.tar.gz && tar -C /usr/local -xzf go1.13.5.linux-amd64.tar.gz && rm -f go1.13.5.linux-amd64.tar.gz ; \
+	 fi
+RUN apt-get update && apt-get install -y graphviz && apt-get clean
 
 RUN mkdir /usr/local/go/path
 ENV GOROOT=/usr/local/go \
