@@ -2,13 +2,13 @@ FROM land007/ubuntu-build:latest
 
 MAINTAINER Yiqiu Jia <yiqiujia@hotmail.com>
 
-RUN cd /tmp && unameOut="$(uname -m)" && \
+RUN cd /tmp && unameOut="$(uname -m)" && echo $unameOut && \
 	 if [ "$unameOut" = "aarch64" ] ; then \
 	 wget https://dl.google.com/go/go1.13.5.linux-arm64.tar.gz && tar -C /usr/local -xzf go1.13.5.linux-arm64.tar.gz && rm -f go1.13.5.linux-arm64.tar.gz ; \
-	 elif [ "$unameOut" = "amd64" ] ; then \
-	 wget https://dl.google.com/go/go1.13.5.linux-amd64.tar.gz && tar -C /usr/local -xzf go1.13.5.linux-amd64.tar.gz && rm -f go1.13.5.linux-amd64.tar.gz ; \
-	 elif [ "$unameOut" = "x86_64" ] ; then \
+	 elif [ "$unameOut" = "armv7l" ] ; then \
 	 wget https://dl.google.com/go/go1.13.5.linux-armv6l.tar.gz && tar -C /usr/local -xzf go1.13.5.linux-armv6l.tar.gz && rm -f go1.13.5.linux-armv6l.tar.gz ; \
+	 elif [ "$unameOut" = "x86_64" ] ; then \
+	 wget https://dl.google.com/go/go1.13.5.linux-amd64.tar.gz && tar -C /usr/local -xzf go1.13.5.linux-amd64.tar.gz && rm -f go1.13.5.linux-amd64.tar.gz ; \
 	 else \
 	 echo "none"; \
 	 fi
